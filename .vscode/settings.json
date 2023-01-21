@@ -21,7 +21,10 @@
   "C_Cpp_Runner.compilerArgs": [],
   "C_Cpp_Runner.linkerArgs": [],
   "C_Cpp_Runner.includePaths": [],
-  "C_Cpp_Runner.includeSearch": ["*", "**/*"],
+  "C_Cpp_Runner.includeSearch": [
+    "*",
+    "**/*"
+  ],
   "C_Cpp_Runner.excludeSearch": [
     "**/build",
     "**/build/**",
@@ -30,7 +33,17 @@
     "**/.vscode",
     "**/.vscode/**"
   ],
-  "cSpell.words": ["hashable", "heapify", "maxheap", "minq"],
+  "cSpell.words": [
+    "Aruna",
+    "Ayush",
+    "Bushan",
+    "Drushan",
+    "hashable",
+    "heapify",
+    "maxheap",
+    "minq",
+    "saksh"
+  ],
   "files.associations": {
     "iostream": "cpp",
     "initializer_list": "cpp",
