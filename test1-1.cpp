@@ -9,10 +9,10 @@ Topic:
 Team members:
             Navaneet R Rao - 1JT21CS064
             Ayush
+            saksh
             Drushan
             Bushan
             Aruna
-            saksh
 
 
 */
@@ -21,7 +21,7 @@ Team members:
 
 using namespace std;
 
-long long get_key[100], get_key_values[100], total_key, total_values;
+long long get_key[100], get_key_values[100], total_key, total_values, new_key[100], new_value[100];
 
 template <class T1, class T2,
           class Comparator = less<T2>,
@@ -286,7 +286,7 @@ int main()
     }
 
     // Printing the contents of IPQ
-    cout << "IPQ: ";
+    cout << "\n IPQ: ";
     display(IPQ);
     cout << '\n';
 
@@ -295,12 +295,29 @@ int main()
     cout << "Top: " << IPQ.top().first << ", " << IPQ.top().second << "\n\n";
 
     // Replace operation
-    cout << "Changing value associated with"  // change the code here
-         << " key 3 to 2 and 1 to 9\n";
-    IPQ.changeAtKey(3, 2);
-    IPQ.changeAtKey(1, 9);
 
-    cout << "IPQ: ";
+    // cout << "Changing value associated with"  // change the code here
+    //      << " key 3 to 2 and 1 to 9\n";
+    // IPQ.changeAtKey(3, 2);
+    // IPQ.changeAtKey(1, 9);
+
+    int total_updates;
+
+    cout << "Enter the total number of key-values to be updated:" << endl;
+    cin >> total_updates;
+
+    cout << "Enter first the key value to be updated and second its new value:" << endl;
+    for (int i = 0; i < total_updates; i++)
+    {
+        cin >> ::new_key[i] >> ::new_value[i];
+    }
+
+    for (int i = 0; i < total_updates; i++)
+    {
+        IPQ.changeAtKey(::new_key[i], ::new_value[i]);
+    }
+
+    cout << "\n IPQ: ";
     display(IPQ);
     cout << '\n';
 
