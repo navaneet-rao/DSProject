@@ -223,6 +223,8 @@ void display(indexed_priority_queue<int, int> IPQ)
 
 void topAndSize(indexed_priority_queue<int, int> IPQ)
 {
+    cout << "IPQ: ";
+    display(IPQ);
     cout << "\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n"
          << "Size: " << IPQ.size() << endl;
     cout << "Top: " << IPQ.top().first << ", " << IPQ.top().second << "\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n"
@@ -293,8 +295,7 @@ int main()
     }
 
     // Printing the contents of IPQ
-    cout << "IPQ: ";
-    display(IPQ);
+
     cout << '\n';
 
     // Checking size and top after pushing
@@ -327,9 +328,9 @@ int main()
         IPQ.changeAtKey(::new_key[i], ::new_value[i]);
     }
 
-    cout << "IPQ: ";
-    display(IPQ);
-    cout << '\n';
+    // cout << "IPQ: ";
+    // display(IPQ);
+    // cout << '\n';
 
     // Checking size and top after replacement
     // cout << "Size: " << IPQ.size() << endl;
@@ -357,9 +358,9 @@ int main()
     }
 
     // Printing the contents of IPQ after deletion
-    cout << "IPQ: ";
-    display(IPQ);
-    cout << '\n';
+    // cout << "IPQ: ";
+    // display(IPQ);
+    // cout << '\n';
 
     // Checking size and top after pushing
     // cout << "Size: " << IPQ.size() << endl;
