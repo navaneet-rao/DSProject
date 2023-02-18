@@ -13,15 +13,13 @@ Team members:
             Drushan
             Bushan
             Aruna
-
-
 */
 
 #include <bits/stdc++.h>
 
 using namespace std;
 
-long long get_key[100], get_key_values[100], total_key, total_values, new_key[100], new_value[100];
+long long get_key[100], get_key_values[100], total_key, total_values, new_key[100], new_value[100] ;
 
 template <class T1, class T2,
           class Comparator = less<T2>,
@@ -50,7 +48,7 @@ class indexed_priority_queue
     {
         if (m[key] == 0)
         {
-            cout << "No Such Key Exist";
+            cout << "~~~~~~~~~~~~~~~~~~~~~~No Such Key Exist~~~~~~~~~~~~~~~~~~";
             return -1;
         }
         return v[m[key] - 1];
@@ -109,12 +107,12 @@ public:
     {
         if (numberOfElement == capacity)
         {
-            cout << "Overflow";
+            cout << "~~~~~~~~~~~~~~~Overflow~~~~~~~~~~~~~~";
             return;
         }
         if (m[key] != 0)
         {
-            cout << "Element Already Exists";
+            cout << "~~~~~~~~~~~~~~~~~~~Element Already Exists~~~~~~~~~~~~~~~~~~~";
             return;
         }
 
@@ -149,7 +147,7 @@ public:
     {
         if (::total_key == 0)
         {
-            cout << "UnderFlow";
+            cout << "~~~~~~~~~~~~~~~UnderFlow~~~~~~~~~~~~~~~~~~";
             return;
         }
 
@@ -178,7 +176,7 @@ public:
     {
         if (m[key] == 0)
         {
-            cout << "No Such Key Exist";
+            cout << "\n~~~~~~~~~~~~~~No Such Key Exist~~~~~~~~~~~~~~~\n";
             return;
         }
         long long index = m[key] - 1;
@@ -223,12 +221,19 @@ void display(indexed_priority_queue<int, int> IPQ)
 
 void topAndSize(indexed_priority_queue<int, int> IPQ)
 {
-    cout << "IPQ: ";
-    display(IPQ);
-    cout << "\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n"
-         << "Size: " << IPQ.size() << endl;
-    cout << "Top: " << IPQ.top().first << ", " << IPQ.top().second << "\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n"
-         << endl;
+    if (IPQ.size() != 0)
+    {
+        cout << "IPQ: ";
+        display(IPQ);
+        cout << "\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n"
+             << "Size: " << IPQ.size() << endl;
+        cout << "Top: " << IPQ.top().first << ", " << IPQ.top().second << "\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n"
+             << endl;
+    }
+    else
+    {
+        cout << "~~~~~~~~~~~~~The queue is empty~~~~~~~~~~~~~~" << endl;
+    }
 }
 // Driver Code
 int main()
@@ -243,13 +248,17 @@ int main()
     int total_updates;
     do
     {
-        printf("\n\n\n\n~~~~~~Menu~~~~~~ : ");
+        printf("\n|-----------------------------------------------------------|\n");
+        printf("|~~~~~~~~~~~~~~~~~~~~~~~~~~~~Menu~~~~~~~~~~~~~~~~~~~~~~~~~~~|\n");
+        printf("|-----------------------------------------------------------|\n");
         printf("\n=>1.Add an element into the queue and Overflow  ");
         printf("\n=>2.pop an element from the queue and Underflow ");
         printf("\n=>3.Display ");
         printf("\n=>4.update the element in queue  ");
-        printf("\n=>5.Exit");
-        printf("\n Enter your choice: ");
+        printf("\n=>5.Exit \n \n");
+        printf("-------------------------------------------------------------\n");
+        printf("\nEnter your choice: ");
+        cout << "\n";
         scanf("%d", &choice);
         switch (choice)
         {
@@ -283,11 +292,11 @@ int main()
             cout << "Checking if initially the IPQ is empty: \n";
             if (::total_key == 0 || ::total_values == 0)
             {
-                cout << "IPQ is empty\n";
+                cout << "\n~~~~~~~~~~~~~~~~~~IPQ is empty~~~~~~~~~~~~~~~~~~\n";
             }
             else
             {
-                cout << "IPQ is not empty\n";
+                cout << "\n~~~~~~~~~~~~~~~~~~IPQ is not empty~~~~~~~~~~~~~~~~\n";
             }
 
             for (int i = 0; i < ::total_key; i++)
@@ -312,6 +321,7 @@ int main()
             }
             break;
         case 3:
+            cout << "\n";
             topAndSize(IPQ);
             break;
         case 4:
@@ -333,7 +343,7 @@ int main()
         case 5:
             exit(0);
         default:
-            printf("\n Please enter valid choice ");
+            printf("\n ~~~~~~~~~~~~~~~~~~~~Please enter valid choice~~~~~~~~~~~~~~~~~~~~~~ ");
             break;
         }
     } while (choice != 5);
