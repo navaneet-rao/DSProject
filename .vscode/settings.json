@@ -48,5 +48,6 @@
     "iostream": "cpp",
     "initializer_list": "cpp",
     "climits": "cpp"
-  }
+  },
+  "C_Cpp_Runner.useAddressSanitizer": false
 }
