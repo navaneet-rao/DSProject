@@ -13,15 +13,13 @@ Team members:
             Drushan
             Bushan
             Aruna
-
-
 */
 
 #include <bits/stdc++.h>
 
 using namespace std;
 
-long long get_key[100], get_key_values[100], total_key, total_values, new_key[100], new_value[100];
+long long get_key[100], get_key_values[100], total_key, total_values, new_key[100], new_value[100] ;
 
 template <class T1, class T2,
           class Comparator = less<T2>,
@@ -50,7 +48,7 @@ class indexed_priority_queue
     {
         if (m[key] == 0)
         {
-            cout << "No Such Key Exist";
+            cout << "~~~~~~~~~~~~~~~~~~~~~~No Such Key Exist~~~~~~~~~~~~~~~~~~";
             return -1;
         }
         return v[m[key] - 1];
@@ -109,12 +107,12 @@ public:
     {
         if (numberOfElement == capacity)
         {
-            cout << "Overflow";
+            cout << "~~~~~~~~~~~~~~~Overflow~~~~~~~~~~~~~~";
             return;
         }
         if (m[key] != 0)
         {
-            cout << "Element Already Exists";
+            cout << "~~~~~~~~~~~~~~~~~~~Element Already Exists~~~~~~~~~~~~~~~~~~~";
             return;
         }
 
@@ -149,7 +147,7 @@ public:
     {
         if (::total_key == 0)
         {
-            cout << "UnderFlow";
+            cout << "~~~~~~~~~~~~~~~UnderFlow~~~~~~~~~~~~~~~~~~";
             return;
         }
 
@@ -178,7 +176,7 @@ public:
     {
         if (m[key] == 0)
         {
-            cout << "No Such Key Exist";
+            cout << "\n~~~~~~~~~~~~~~No Such Key Exist~~~~~~~~~~~~~~~\n";
             return;
         }
         long long index = m[key] - 1;
@@ -223,153 +221,132 @@ void display(indexed_priority_queue<int, int> IPQ)
 
 void topAndSize(indexed_priority_queue<int, int> IPQ)
 {
-    cout << "IPQ: ";
-    display(IPQ);
-    cout << "\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n"
-         << "Size: " << IPQ.size() << endl;
-    cout << "Top: " << IPQ.top().first << ", " << IPQ.top().second << "\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n"
-         << endl;
+    if (IPQ.size() != 0)
+    {
+        cout << "IPQ: ";
+        display(IPQ);
+        cout << "\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n"
+             << "Size: " << IPQ.size() << endl;
+        cout << "Top: " << IPQ.top().first << ", " << IPQ.top().second << "\n~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n"
+             << endl;
+    }
+    else
+    {
+        cout << "~~~~~~~~~~~~~The queue is empty~~~~~~~~~~~~~~" << endl;
+    }
 }
 // Driver Code
 int main()
 {
-
-    cout << "Enter the total number of members key in the queue: \n";
-    cin >> ::total_key;
-
-    cout << "Enter the total number of members key values in the queue: \n";
-    cin >> ::total_values;
-
-    if (::total_key != ::total_values)
-    {
-        cout << "ERROR :: The number of keys and there respected values are not equal!!";
-    }
-
-    cout << "First insert the keys in your order: \n";
-    for (int i = 0; i < ::total_key; i++)
-    {
-        cin >> get_key[i];
-    }
-
-    cout << "Second insert the values of respective keys: \n";
-    for (int i = 0; i < ::total_values; i++)
-    {
-        cin >> ::get_key_values[i];
-    }
-
-    cout << '\n';
-
     // First parameter is key datatype
     // and it should be hashable
     // Second parameter is value datatype comparator
     // function (by default it implements maxheap)
-
     indexed_priority_queue<int, int> IPQ;
-
-    // Check if empty
-    cout << "Checking if initially the IPQ is empty: \n";
-    if (::total_key == 0 || ::total_values == 0)
-    {
-        cout << "IPQ is empty\n";
-    }
-    else
-    {
-        cout << "IPQ is not empty\n";
-    }
-
-    cout << '\n';
-
-    // Insertion
-
-    // cout << "Inserting pairs (2, 1), (3, 7), "
-    //      << " (1, 0) and (4, 5) also (5, 7)\n";
-    // IPQ.push(2, 1);
-    // IPQ.push(3, 7);
-    // IPQ.push(1, 0);
-    // IPQ.push(4, 5);
-    // IPQ.push(5, 7);
-
-    for (int i = 0; i < ::total_key; i++)
-    {
-        IPQ.push(::get_key[i], ::get_key_values[i]);
-    }
-
-    // Printing the contents of IPQ
-
-    cout << '\n';
-
-    // Checking size and top after pushing
-
-    // cout << "Size: " << IPQ.size() << endl;
-    // cout << "Top: " << IPQ.top().first << ", " << IPQ.top().second << "\n\n";
-
-    topAndSize(IPQ);
-
-    // Replace operation
-
-    // cout << "Changing value associated with"  // change the code here
-    //      << " key 3 to 2 and 1 to 9\n";
-    // IPQ.changeAtKey(3, 2);
-    // IPQ.changeAtKey(1, 9);
-
-    int total_updates;
-
-    cout << "Enter the total number of key-values to be updated:" << endl;
-    cin >> total_updates;
-
-    cout << "Enter first the key value to be updated and second its new value:" << endl;
-    for (int i = 0; i < total_updates; i++)
-    {
-        cin >> ::new_key[i] >> ::new_value[i];
-    }
-
-    for (int i = 0; i < total_updates; i++)
-    {
-        IPQ.changeAtKey(::new_key[i], ::new_value[i]);
-    }
-
-    // cout << "IPQ: ";
-    // display(IPQ);
-    // cout << '\n';
-
-    // Checking size and top after replacement
-    // cout << "Size: " << IPQ.size() << endl;
-    // cout << "Top: " << IPQ.top().first << ", " << IPQ.top().second << "\n\n";
-
-    topAndSize(IPQ);
-
-    // Deleting elements from IPQ
-
-    // cout << "Popping an element from IPQ: ";
-    // IPQ.pop();
-
+    int choice;
     int total_dequeue, popCount = 0;
-
-    cout << "Enter the total number of times pop operation should be done:" << endl;
-    cin >> total_dequeue;
-
-    while (popCount < total_dequeue)
+    int total_updates;
+    do
     {
-        cout << "\n Popping an element from IPQ: " << endl;
-        display(IPQ);
-        IPQ.pop();
-        popCount++;
-        cout << '\n';
-    }
+        printf("\n|-----------------------------------------------------------|\n");
+        printf("|~~~~~~~~~~~~~~~~~~~~~~~~~~~~Menu~~~~~~~~~~~~~~~~~~~~~~~~~~~|\n");
+        printf("|-----------------------------------------------------------|\n");
+        printf("\n=>1.Add an element into the queue and Overflow  ");
+        printf("\n=>2.pop an element from the queue and Underflow ");
+        printf("\n=>3.Display ");
+        printf("\n=>4.update the element in queue  ");
+        printf("\n=>5.Exit \n \n");
+        printf("-------------------------------------------------------------\n");
+        printf("\nEnter your choice: ");
+        cout << "\n";
+        scanf("%d", &choice);
+        switch (choice)
+        {
+        case 1:
+            cout << "Enter the total number of members key in the queue: \n";
+            cin >> ::total_key;
 
-    // Printing the contents of IPQ after deletion
-    // cout << "IPQ: ";
-    // display(IPQ);
-    // cout << '\n';
+            cout << "Enter the total number of members key values in the queue: \n";
+            cin >> ::total_values;
 
-    // Checking size and top after pushing
-    // cout << "Size: " << IPQ.size() << endl;
-    // cout << "Top: " << IPQ.top().first << ", " << IPQ.top().second << "\n\n";
-    topAndSize(IPQ);
+            if (::total_key != ::total_values)
+            {
+                cout << "ERROR :: The number of keys and there respected values are not equal!!";
+            }
 
-    cout << "IPQ: ";
-    display(IPQ);
-    cout << '\n';
+            cout << "First insert the keys in your order: \n";
+            for (int i = 0; i < ::total_key; i++)
+            {
+                cin >> get_key[i];
+            }
+
+            cout << "Second insert the values of respective keys: \n";
+            for (int i = 0; i < ::total_values; i++)
+            {
+                cin >> ::get_key_values[i];
+            }
+
+            cout << '\n';
+
+            // Check if empty
+            cout << "Checking if initially the IPQ is empty: \n";
+            if (::total_key == 0 || ::total_values == 0)
+            {
+                cout << "\n~~~~~~~~~~~~~~~~~~IPQ is empty~~~~~~~~~~~~~~~~~~\n";
+            }
+            else
+            {
+                cout << "\n~~~~~~~~~~~~~~~~~~IPQ is not empty~~~~~~~~~~~~~~~~\n";
+            }
+
+            for (int i = 0; i < ::total_key; i++)
+            {
+                IPQ.push(::get_key[i], ::get_key_values[i]);
+            }
+
+            cout << '\n';
+            break;
+        case 2:
+
+            cout << "Enter the total number of times pop operation should be done:" << endl;
+            cin >> total_dequeue;
+
+            while (popCount < total_dequeue)
+            {
+                cout << "\n Popping an element from IPQ: " << endl;
+                display(IPQ);
+                IPQ.pop();
+                popCount++;
+                cout << '\n';
+            }
+            break;
+        case 3:
+            cout << "\n";
+            topAndSize(IPQ);
+            break;
+        case 4:
+
+            cout << "Enter the total number of key-values to be updated:" << endl;
+            cin >> total_updates;
+
+            cout << "Enter first the key value to be updated and second its new value:" << endl;
+            for (int i = 0; i < total_updates; i++)
+            {
+                cin >> ::new_key[i] >> ::new_value[i];
+            }
+
+            for (int i = 0; i < total_updates; i++)
+            {
+                IPQ.changeAtKey(::new_key[i], ::new_value[i]);
+            }
+            break;
+        case 5:
+            exit(0);
+        default:
+            printf("\n ~~~~~~~~~~~~~~~~~~~~Please enter valid choice~~~~~~~~~~~~~~~~~~~~~~ ");
+            break;
+        }
+    } while (choice != 5);
 
     return 0;
 }
