@@ -10,7 +10,7 @@ Team members:
             Navaneet R Rao - 1JT21CS064
             Ayush
             saksh
-            Drushan
+            Darshan
             Bushan
             Aruna
 */
